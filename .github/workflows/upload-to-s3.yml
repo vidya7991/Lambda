@@ -27,6 +27,6 @@ jobs:
 
       - name: Upload ZIP file to S3
         run: |
-          aws s3 cp app.zip s3://your-s3-bucket-name/python-apps/app.zip
+          aws s3 cp app.zip s3://my-python-apps-bucket/python-apps/app.zip
           echo "Uploaded app.zip to S3 bucket"
           
