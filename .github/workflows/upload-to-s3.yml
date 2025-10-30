@@ -1,9 +1,9 @@
-name: Upload Python App to S3
+name: Upload Zipped Python App to S3
 
 on:
   push:
     branches:
-      - main
+      - main   
 
 jobs:
   upload:
@@ -18,8 +18,15 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1   # change region if needed
+          aws-region: us-east-1   
 
-      - name: Upload Python script to S3
+      - name: Zip Python app
         run: |
-          aws s3 cp app.py s3://my-python-apps-bucket/python-apps/app.py
+          zip app.zip app.py
+          echo "Zipped app.py into app.zip"
+
+      - name: Upload ZIP file to S3
+        run: |
+          aws s3 cp app.zip s3://your-s3-bucket-name/python-apps/app.zip
+          echo "Uploaded app.zip to S3 bucket"
+          
