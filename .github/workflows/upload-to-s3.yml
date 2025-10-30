@@ -22,4 +22,4 @@ jobs:
 
       - name: Upload Python script to S3
         run: |
-          aws s3 cp count_to_ten.py s3://your-s3-bucket-name/python-apps/app.py
+          aws s3 cp app.py s3://your-s3-bucket-name/python-apps/app.py
